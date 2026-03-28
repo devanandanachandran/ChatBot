@@ -28,7 +28,8 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3000/chat', {
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+      const response = await fetch(`${backendUrl}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: content })
@@ -42,7 +43,8 @@ function App() {
       setMessages(prev => [...prev, { role: 'assistant', content: data.reply || "No reply available from server." }]);
     } catch (error) {
       console.error('Error communicating with backend:', error);
-      setMessages(prev => [...prev, { role: 'assistant', content: 'Connection error: Unable to reach the backend server. Make sure it is running on localhost:3000.' }]);
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+      setMessages(prev => [...prev, { role: 'assistant', content: `Connection error: Unable to reach the backend server at ${backendUrl}.` }]);
     } finally {
       setIsLoading(false);
     }
