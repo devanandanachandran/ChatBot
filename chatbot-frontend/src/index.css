@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700&display=swap');
+
+:root {
+  /* Ultra-Premium Light Theme */
+  --primary: #00bcd4;
+  --primary-hover: #00acc1;
+  --bg-gradient: linear-gradient(-45deg, #e0f7fa, #b2ebf2, #80deea, #ffffff);
+  --surface-blur: rgba(255, 255, 255, 0.55);
+  --surface-header: linear-gradient(135deg, #00acc1 0%, #00838f 100%);
+  --text-dark: #1e293b;
+  --text-light: #64748b;
+  
+  /* Message Colors */
+  --user-msg: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+  --user-text: #005662;
+  --bot-msg: rgba(255, 255, 255, 0.95);
+  
+  /* UI Elements */
+  --input-bg: rgba(255, 255, 255, 0.85);
+  --border-color: rgba(255, 255, 255, 0.6);
+  --inner-border: rgba(255, 255, 255, 0.8);
+  --code-bg: rgba(15, 23, 42, 0.06);
+  --shadow-color: rgba(0, 151, 167, 0.15);
+}
+
+body.dark-mode {
+  /* Ultra-Premium Cyberpunk / Hacker Dark Theme */
+  --primary: #00e5ff;
+  --primary-hover: #18ffff;
+  --bg-gradient: linear-gradient(-45deg, #0f172a, #1e293b, #0f2027, #203a43);
+  --surface-blur: rgba(15, 23, 42, 0.65);
+  --surface-header: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.95) 100%);
+  --text-dark: #f8fafc;
+  --text-light: #94a3b8;
+  
+  /* Message Colors */
+  --user-msg: linear-gradient(135deg, rgba(0, 229, 255, 0.15) 0%, rgba(0, 229, 255, 0.05) 100%);
+  --user-text: #e0f7fa;
+  --bot-msg: rgba(30, 41, 59, 0.85);
+  
+  /* UI Elements */
+  --input-bg: rgba(30, 41, 59, 0.7);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --inner-border: rgba(255, 255, 255, 0.1);
+  --code-bg: rgba(0, 0, 0, 0.5);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg-gradient);
+  background-size: 300% 300%;
+  animation: gradientShift 20s ease infinite;
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
