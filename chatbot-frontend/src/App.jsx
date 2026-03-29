@@ -9,7 +9,7 @@ function App() {
     { role: 'assistant', content: "Hi! I'm your AI assistant. How can I help you today?" }
   ]);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   // Load dark mode preference from user history or default to false
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -28,22 +28,22 @@ function App() {
     setIsLoading(true);
 
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://https://chatbot-1-uocq.onrender.com';
       const response = await fetch(`${backendUrl}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: content })
       });
-      
+
       if (!response.ok) {
         throw new Error("Network response failed");
       }
-      
+
       const data = await response.json();
       setMessages(prev => [...prev, { role: 'assistant', content: data.reply || "No reply available from server." }]);
     } catch (error) {
       console.error('Error communicating with backend:', error);
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000';
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://https://chatbot-1-uocq.onrender.com';
       setMessages(prev => [...prev, { role: 'assistant', content: `Connection error: Unable to reach the backend server at ${backendUrl}.` }]);
     } finally {
       setIsLoading(false);
@@ -66,17 +66,17 @@ function App() {
             <p>Online & Ready</p>
           </div>
         </div>
-        
+
         {/* Toggle and Clear Buttons */}
         <div className="header-actions">
-          <button 
+          <button
             className="action-btn"
             onClick={() => setIsDarkMode(!isDarkMode)}
             title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
           >
             {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
-          <button 
+          <button
             className="action-btn"
             onClick={handleClearChat}
             title="Clear Chat History"
@@ -85,7 +85,7 @@ function App() {
           </button>
         </div>
       </header>
-      
+
       <ChatBox messages={messages} isLoading={isLoading} />
       <InputArea onSendMessage={handleSendMessage} disabled={isLoading} />
     </div>
