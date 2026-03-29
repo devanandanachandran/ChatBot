@@ -28,7 +28,7 @@ function App() {
     setIsLoading(true);
 
     try {
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://https://chatbot-1-uocq.onrender.com';
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://chatbot-1-uocq.onrender.com';
       const response = await fetch(`${backendUrl}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -43,7 +43,7 @@ function App() {
       setMessages(prev => [...prev, { role: 'assistant', content: data.reply || "No reply available from server." }]);
     } catch (error) {
       console.error('Error communicating with backend:', error);
-      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://https://chatbot-1-uocq.onrender.com';
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://chatbot-1-uocq.onrender.com';
       setMessages(prev => [...prev, { role: 'assistant', content: `Connection error: Unable to reach the backend server at ${backendUrl}.` }]);
     } finally {
       setIsLoading(false);

@@ -39,7 +39,7 @@ async function sendMessage() {
 
   try {
     // Send message to backend
-    const response = await fetch("http://https://chatbot-1-uocq.onrender.com/chat", {
+    const response = await fetch("https://chatbot-1-uocq.onrender.com/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
